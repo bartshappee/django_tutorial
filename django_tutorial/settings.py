@@ -106,9 +106,7 @@ ROOT_URLCONF = 'django_tutorial.urls'
 WSGI_APPLICATION = 'django_tutorial.wsgi.application'
 
 TEMPLATE_DIRS = (
-    # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
-    # Always use forward slashes, even on Windows.
-    # Don't forget to use absolute paths, not relative paths.
+    '/home/bartshappee/djangoapp/django_tutorial/django_tutorial/templates', # Change this to your own directory.
 )
 
 INSTALLED_APPS = (
@@ -152,7 +150,3 @@ LOGGING = {
         },
     }
 }
-
-TEMPLATE_DIRS = (
-    '/path/to/mysite/templates', # Change this to your own directory.
-)
