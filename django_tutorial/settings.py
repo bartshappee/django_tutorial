@@ -1,3 +1,12 @@
+import os
+import django
+
+# calculated paths for django and the site
+# used as starting points for various other paths
+DJANGO_ROOT = os.path.dirname(os.path.realpath(django.__file__))
+SITE_ROOT = os.path.dirname(os.path.realpath(__file__))
+SITE_ROOT = os.path.abspath(os.path.join(SITE_ROOT, os.pardir))
+
 # Django settings for django_tutorial project.
 
 DEBUG = True
@@ -9,10 +18,12 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
+DATABASE_ENGINE = 'sqlite3'
+DATABASE_NAME = os.path.join(SITE_ROOT, 'db') + '/django_tut.sqllite3'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': '/tmp/django_tut.sqllite3',                      # Or path to database file if using sqlite3.
+        'NAME': DATABASE_NAME,     # Or path to database file if using sqlite3.
         # The following settings are not used with sqlite3:
         'USER': '',
         'PASSWORD': '',
@@ -97,7 +108,8 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     # Uncomment the next line for simple clickjacking protection:
-    # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # 'django.middleware.clickjacking.XFrameOptionsM
+    #'pipeline.middleware.MinifyHTMLMiddldjango-pipeline==1.3.14
 )
 
 ROOT_URLCONF = 'django_tutorial.urls'
@@ -119,7 +131,14 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
+    
+    #External Apps
+    'pipeline',
+    'twitter_bootstrap',
+    
+    #Internal Apps
     'polls',
+    
 )
 
 # A sample logging configuration. The only tangible logging
